@@ -1,0 +1,27 @@
+---
+import Logo from './Logo.astro';
+import { links } from '../site';
+
+// Section links point at the home page, so they also work from the 404 page.
+const nav = [
+	{ href: '/#features', label: 'Features' },
+	{ href: '/#how-it-works', label: 'How it works' },
+	{ href: '/#faq', label: 'FAQ' },
+	{ href: links.docsHome, label: 'Docs' },
+];
+---
+
+<header class="site-header">
+	<div class="wrap">
+		<a class="brand" href="/" aria-label="Jamhooks home">
+			<Logo />
+			<span>Jamhooks</span>
+		</a>
+		<nav class="site-nav" aria-label="Main">
+			<ul class="nav-links">
+				{nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+			</ul>
+		</nav>
+		<a class="btn btn-primary btn-sm" href={links.quickStart}>Get started</a>
+	</div>
+</header>

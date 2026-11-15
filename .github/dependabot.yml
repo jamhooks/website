@@ -1,0 +1,30 @@
+# Weekly, grouped update PRs for the pinned workflow actions (by commit SHA) and the npm
+# lock. `cooldown` holds a fresh release back a few days, so a compromised or yanked one
+# has time to be noticed first; security updates are not delayed.
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: ci
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: build
+    groups:
+      # Astro and Starlight move together; a major release still gets its own PR.
+      npm:
+        update-types: [minor, patch]

@@ -1,0 +1,292 @@
+---
+// The one page. Content lives in the arrays below; every claim must hold for the app
+// (README.md and docs/*.md in the jamhooks repo). Examples use example.com and
+// placeholder names only.
+import {
+	Activity,
+	Bot,
+	Check,
+	Container,
+	FlaskConical,
+	History,
+	Plus,
+	Workflow,
+	X,
+} from '@lucide/astro';
+import Base from '../layouts/Base.astro';
+import FlowMock from '../components/FlowMock.astro';
+import { links } from '../site';
+
+const facts = [
+	'Built for Jambonz',
+	'Self-hosted',
+	'One Docker image',
+	'No database',
+	'No call records',
+];
+
+const withJamhooks = [
+	'Call flows the whole team can read and change',
+	'Changes go live with Deploy, not a code release',
+	'A dry run before every real call',
+	'A version history you can roll back',
+	'One container and a folder of JSON files',
+];
+
+const noMore = [
+	'A hand-written webhook server for every phone menu',
+	'Verb JSON built in code and tested by calling yourself',
+	'Guessing which branch a caller ended up in',
+	'A code release for every changed prompt',
+	'A database to run just for call flows',
+];
+
+const features = [
+	{
+		icon: Workflow,
+		title: 'Visual designer',
+		text: 'Nest components and give every outcome its own branch: menus, transfers, queues, conferences, date and time rules. Reusable subflows, and validation as you edit.',
+	},
+	{
+		icon: Bot,
+		title: 'AI voice agents',
+		text: 'Drop an AI Agent into any flow to hand the caller to an LLM voice agent from OpenAI, Azure OpenAI, Google, Deepgram, Ultravox or ElevenLabs.',
+	},
+	{
+		icon: FlaskConical,
+		title: 'Simulate first',
+		text: 'Dry-run a flow with typed digits or speech and see every step it takes, before anyone picks up a phone.',
+	},
+	{
+		icon: Activity,
+		title: 'Live debug',
+		text: 'Attach the Debug pane and watch real calls move through the flow, node by node. Nothing is stored: close the tab and it is gone.',
+	},
+	{
+		icon: History,
+		title: 'Versioned deploys',
+		text: 'Every deploy is a snapshot you can view, download and restore. Flows export and import as JSON.',
+	},
+	{
+		icon: Container,
+		title: 'Self-contained',
+		text: 'One Python service that keeps flows in JSON files: no database, no migrations. Ships as a Docker image, with optional Loki and Grafana monitoring.',
+	},
+];
+
+// Answers are trusted, hand-written HTML (rendered with set:html).
+const faqs = [
+	{
+		q: 'What is Jambonz?',
+		a: 'Jambonz is an open-source voice platform for building telephony applications. When a call comes in, it asks your application what to do next over HTTP webhooks. Jamhooks is that application, built visually.',
+	},
+	{
+		q: 'Do I need to write code?',
+		a: 'No. Flows are built from components, and the logic comes from Conditional rules, call variables, the HTTP Request and JSON Parser components, and reusable subflows. If you know Jambonz, you will recognise the verbs underneath.',
+	},
+	{
+		q: 'Where does it run?',
+		a: `On your own server. Jamhooks is a single Python service that stores flows as JSON files, shipped as a Docker image. Try it on your own machine first, then follow the <a href="${links.deployment}">deployment guide</a> before you take real calls.`,
+	},
+	{
+		q: 'Can I test a flow without calling it?',
+		a: 'Yes. Simulate dry-runs a flow with the digits or speech you type and shows the path it takes. Once real calls come in, the Debug pane shows each one live, node by node.',
+	},
+	{
+		q: 'What does Jamhooks store about callers?',
+		a: `No call records: no caller numbers, digits, speech, recordings or call history, not even temporarily. Its own logs identify calls, not callers. The <a href="${links.privacy}">personal data reference</a> has the details.`,
+	},
+	{
+		q: 'Can I move flows between servers?',
+		a: 'Yes. Flows export and import as JSON, and every deploy is a snapshot you can download and restore.',
+	},
+];
+---
+
+<Base
+	title="Jamhooks: visual call flows for Jambonz"
+	description="Jamhooks is a drag-and-drop IVR designer for Jambonz. It compiles your call flows into Jambonz verbs and answers the webhooks itself. Self-hosted, one Docker image, no database."
+>
+	<section class="hero">
+		<div class="wrap">
+			<span class="pill"><span class="dot"></span>Visual IVR for Jambonz</span>
+			<h1>
+				<span class="line">Draw the call flow.</span>
+				<span class="line dim">Skip the webhook server.</span>
+			</h1>
+			<p class="lede">
+				Jamhooks is a drag-and-drop designer for Jambonz call flows. It compiles what you build into
+				Jambonz verbs and answers the webhooks itself, so you design the call and Jamhooks runs it.
+			</p>
+			<div class="actions">
+				<a class="btn btn-primary" href={links.quickStart}>Get started</a>
+				<a class="btn btn-ghost" href="#how-it-works">See how it works</a>
+			</div>
+			<FlowMock />
+		</div>
+	</section>
+
+	<div class="facts">
+		<div class="wrap">
+			<ul aria-label="At a glance">
+				{
+					facts.map((fact) => (
+						<li>
+							<Check size={16} aria-hidden="true" />
+							{fact}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+
+	<section class="section" aria-labelledby="why">
+		<div class="wrap">
+			<div class="section-head">
+				<span class="kicker">Why Jamhooks</span>
+				<h2 id="why">Stop hand-writing a webhook server for every phone menu.</h2>
+				<p>
+					Jambonz asks your application what to do on every step of a call. Jamhooks gives it the
+					answer from a flow you can see.
+				</p>
+			</div>
+			<div class="compare">
+				<div class="compare-card with">
+					<h3>With Jamhooks</h3>
+					<ul>
+						{
+							withJamhooks.map((item) => (
+								<li>
+									<Check size={18} aria-hidden="true" />
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<div class="compare-card without">
+					<h3>No more</h3>
+					<ul>
+						{
+							noMore.map((item) => (
+								<li>
+									<X size={18} aria-hidden="true" />
+									{item}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="features" aria-labelledby="features-title">
+		<div class="wrap">
+			<div class="section-head">
+				<span class="kicker">Features</span>
+				<h2 id="features-title">Everything a call flow needs. Nothing it doesn't.</h2>
+			</div>
+			<ul class="features">
+				{
+					features.map((f) => (
+						<li class="feature">
+							<span class="feature-icon">
+								<f.icon size={20} aria-hidden="true" />
+							</span>
+							<h3>{f.title}</h3>
+							<p>{f.text}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="section" id="how-it-works" aria-labelledby="how-title">
+		<div class="wrap narrow">
+			<div class="section-head">
+				<span class="kicker">How it works</span>
+				<h2 id="how-title">From drawing to ringing phone in three steps.</h2>
+			</div>
+			<ol class="steps">
+				<li class="step">
+					<div>
+						<h3>Build the flow</h3>
+						<p>
+							Open the designer, add components and fill in each branch. Simulate it until every
+							path does what you expect, then click Deploy.
+						</p>
+					</div>
+				</li>
+				<li class="step">
+					<div>
+						<h3>Point Jambonz at it</h3>
+						<p>
+							In your Jambonz application, set two webhooks (method POST) to the URLs shown on the
+							flow's page.
+						</p>
+						<dl class="hooks">
+							<div>
+								<dt>Calling webhook</dt>
+								<dd><code>https://flows.example.com/webhooks/support/main-line</code></dd>
+							</div>
+							<div>
+								<dt>Call status webhook</dt>
+								<dd><code>https://flows.example.com/webhooks/support/main-line/callstatus</code></dd>
+							</div>
+						</dl>
+					</div>
+				</li>
+				<li class="step">
+					<div>
+						<h3>Take calls</h3>
+						<p>
+							Jambonz calls the webhooks and Jamhooks answers with the verbs for each step. Open
+							Debug to watch live calls move through the flow.
+						</p>
+					</div>
+				</li>
+			</ol>
+		</div>
+	</section>
+
+	<section class="section" id="faq" aria-labelledby="faq-title">
+		<div class="wrap narrow">
+			<div class="section-head">
+				<span class="kicker">FAQ</span>
+				<h2 id="faq-title">Questions, answered.</h2>
+			</div>
+			<div class="faq">
+				{
+					faqs.map((item) => (
+						<details>
+							<summary>
+								{item.q}
+								<Plus size={20} aria-hidden="true" />
+							</summary>
+							<p set:html={item.a} />
+						</details>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="cta-title">
+		<div class="wrap">
+			<div class="cta">
+				<h2 id="cta-title">Draw the flow. Jamhooks answers the webhooks.</h2>
+				<p>
+					Start it on your own machine with Docker, build your first flow and point a Jambonz
+					application at it.
+				</p>
+				<div class="actions">
+					<a class="btn btn-primary" href={links.quickStart}>Get started</a>
+					<a class="btn btn-ghost" href={links.docsHome}>Read the docs</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Base>

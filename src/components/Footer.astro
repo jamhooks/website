@@ -1,0 +1,65 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import Logo from './Logo.astro';
+import { links } from '../site';
+
+const columns = [
+	{
+		title: 'Product',
+		items: [
+			{ href: '/#features', label: 'Features' },
+			{ href: '/#how-it-works', label: 'How it works' },
+			{ href: '/#faq', label: 'FAQ' },
+		],
+	},
+	{
+		title: 'Docs',
+		items: [
+			{ href: links.quickStart, label: 'Quick start' },
+			{ href: links.connectJambonz, label: 'Connect Jambonz' },
+			{ href: links.flowsReference, label: 'Building flows' },
+		],
+	},
+	{
+		title: 'Related',
+		items: [{ href: links.jambonz, label: 'Jambonz', external: true }],
+	},
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="wrap">
+		<div class="footer-grid">
+			<div>
+				<a class="brand" href="/" aria-label="Jamhooks home">
+					<Logo size={24} />
+					<span>Jamhooks</span>
+				</a>
+				<p>Visual call flows for Jambonz. Self-hosted, in a single container.</p>
+			</div>
+			{
+				columns.map((col) => (
+					<nav aria-label={col.title}>
+						<h2>{col.title}</h2>
+						<ul>
+							{col.items.map((item) => (
+								<li>
+									<a href={item.href}>
+										{item.label}
+										{'external' in item && <ArrowUpRight size={14} aria-hidden="true" />}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				))
+			}
+		</div>
+		<div class="footer-bottom">
+			<span>&copy; {year} Jamhooks</span>
+			<span>No cookies. No tracking.</span>
+		</div>
+	</div>
+</footer>

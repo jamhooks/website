@@ -1,0 +1,90 @@
+---
+// The hero visual: a flow as the designer shows it, next to the webhook response Jamhooks
+// sends Jambonz for its first step. Keep it true to the app: component names from
+// docs/FLOWS.md, the gather fields from app/nodes/verbs/menu.py, and the action hook
+// route from docs/API.md (`/webhooks/{flow_name}/continue/{node_id}`). The app sends the
+// action hook with BASE_WEBHOOK_URL in front; the panel says "simplified" and shows only
+// the path, so the line fits.
+import { Bot, ListOrdered, PhoneForwarded, PhoneOff, Volume2, Workflow } from '@lucide/astro';
+
+const branches = [
+	{ outlet: '1', icon: PhoneForwarded, kind: 'Transfer', detail: 'Sales queue' },
+	{ outlet: '2', icon: Bot, kind: 'AI Agent', detail: 'Support assistant' },
+	{ outlet: 'timeout', icon: PhoneOff, kind: 'Disconnect', detail: '' },
+];
+
+const response = `[
+  {
+    "verb": "say",
+    "text": "Thanks for calling Example Co."
+  },
+  {
+    "verb": "gather",
+    "input": ["digits"],
+    "numDigits": 1,
+    "timeout": 8,
+    "say": { "text": "Press 1 for sales, 2 for support." },
+    "actionHook": "/webhooks/support/main-line/continue/menu1"
+  }
+]`;
+
+// A tiny JSON highlighter: keys, strings and numbers. The input is the constant above.
+const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const highlighted = escape(response).replace(
+	/("(?:[^"\\]|\\.)*")(\s*:)?|\b(\d+)\b/g,
+	(_, str, colon, num) =>
+		num !== undefined
+			? `<span class="n">${num}</span>`
+			: colon
+				? `<span class="k">${str}</span>${colon}`
+				: `<span class="s">${str}</span>`,
+);
+---
+
+<div class="hero-visual">
+	<figure class="panel" aria-label="Example flow in the Jamhooks designer">
+		<div class="panel-bar">
+			<span class="panel-title"><Workflow size={15} aria-hidden="true" /> support/main-line</span>
+			<span class="badge">Deployed</span>
+		</div>
+		<div class="flow">
+			<span class="handler">Main</span>
+			<ol>
+				<li class="node">
+					<span class="node-icon"><Volume2 size={16} aria-hidden="true" /></span>
+					<span class="node-kind">Play Prompt</span>
+					<span class="node-detail">"Thanks for calling Example Co."</span>
+				</li>
+				<li>
+					<div class="node">
+						<span class="node-icon"><ListOrdered size={16} aria-hidden="true" /></span>
+						<span class="node-kind">Menu</span>
+						<span class="node-detail">"Press 1 for sales, 2 for support."</span>
+					</div>
+					<ul class="branches">
+						{
+							branches.map((b) => (
+								<li class="node">
+									<span class="outlet">{b.outlet}</span>
+									<span class="node-icon">
+										<b.icon size={16} aria-hidden="true" />
+									</span>
+									<span class="node-kind">{b.kind}</span>
+									{b.detail && <span class="node-detail">{b.detail}</span>}
+								</li>
+							))
+						}
+					</ul>
+				</li>
+			</ol>
+		</div>
+	</figure>
+
+	<figure class="panel code" aria-label="The webhook response Jamhooks sends Jambonz">
+		<div class="panel-bar">
+			<span class="panel-title">Webhook response</span>
+			<span>simplified</span>
+		</div>
+		<pre><code set:html={highlighted} /></pre>
+	</figure>
+</div>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Jamhooks website: one stylesheet, dark only.
+   Jamhooks website: one stylesheet, dark teal only.
    Tokens first, then base, layout, components, and the page sections in the
    order they appear on the page.
    ========================================================================== */
@@ -7,20 +7,28 @@
 :root {
 	color-scheme: dark;
 
-	--bg: #0b0c10;
-	--bg-raised: #13151b;
-	--bg-sunken: #0f1115;
-	--line: #23262f;
-	--line-strong: #323643;
-	--text: #eceef3;
-	--muted: #9aa1b2;
+	/* Brand colours, from public/brandkit/v1/README.md. */
+	--coral: #ff5252;
+	--teal: #006b6b;
+	--teal-dark: #004d50;
 
-	--accent: #ff7a45;
-	--accent-hover: #ff9466;
-	--accent-ink: #1a0b04;
-	--accent-soft: rgb(255 122 69 / 0.12);
-	--ok: #5ad49b;
-	--no: #f08080;
+	/* Surfaces are darker shades of Dark Teal, so coral passes 4.5:1 as text on them. */
+	--bg: #002326;
+	--bg-raised: #002e31;
+	--bg-sunken: #001c1f;
+	--line: #0b4245;
+	--line-strong: #1a5a5d;
+	--text: #f2f8f8;
+	--muted: #a3c2c2;
+
+	--accent: var(--coral);
+	--accent-hover: #ff6b6b;
+	/* White on coral is only 3.2:1, so text on coral is this dark teal. */
+	--accent-ink: #001a1c;
+	/* Icon tiles: coral on Deep Teal, like the brand kit's app icon (3.3:1, enough for icons). */
+	--icon-tile: rgb(0 107 107 / 0.4);
+	--ok: #5edcb8;
+	--no: #ff8a8a;
 
 	--radius: 16px;
 	--radius-sm: 10px;
@@ -243,7 +251,7 @@ svg {
 	position: sticky;
 	top: 0;
 	z-index: 50;
-	background: rgb(11 12 16 / 0.78);
+	background: rgb(0 35 38 / 0.8);
 	backdrop-filter: saturate(140%) blur(12px);
 	-webkit-backdrop-filter: saturate(140%) blur(12px);
 	border-bottom: 1px solid var(--line);
@@ -259,11 +267,11 @@ svg {
 .brand {
 	display: inline-flex;
 	align-items: center;
-	gap: 10px;
-	font-size: 1.0625rem;
-	font-weight: 700;
-	letter-spacing: -0.02em;
-	text-decoration: none;
+}
+
+.brand img {
+	display: block;
+	width: auto;
 }
 
 /* Below 760px only the logo and "Get started" show, so no menu toggle is needed. */
@@ -319,7 +327,7 @@ svg {
 	inset: -64px 0 auto;
 	height: 720px;
 	z-index: -1;
-	background: radial-gradient(ellipse 60% 55% at 50% 0%, rgb(255 122 69 / 0.2), transparent 70%);
+	background: radial-gradient(ellipse 60% 55% at 50% 0%, rgb(0 107 107 / 0.55), transparent 70%);
 	pointer-events: none;
 }
 
@@ -330,7 +338,7 @@ svg {
 	padding: 6px 14px;
 	border: 1px solid var(--line-strong);
 	border-radius: 999px;
-	background: rgb(19 21 27 / 0.7);
+	background: rgb(0 46 49 / 0.7);
 	color: var(--muted);
 	font-size: 0.875rem;
 	font-weight: 500;
@@ -426,7 +434,7 @@ svg {
 	gap: 6px;
 	padding: 3px 10px;
 	border-radius: 999px;
-	background: rgb(90 212 155 / 0.12);
+	background: rgb(94 220 184 / 0.12);
 	color: var(--ok);
 	font-size: 0.75rem;
 	font-weight: 600;
@@ -487,7 +495,7 @@ svg {
 	width: 28px;
 	height: 28px;
 	border-radius: 7px;
-	background: var(--accent-soft);
+	background: var(--icon-tile);
 	color: var(--accent);
 	flex-shrink: 0;
 }
@@ -562,11 +570,11 @@ svg {
 }
 
 .code .k {
-	color: #c9b8ff;
+	color: #8fe0dc;
 }
 
 .code .s {
-	color: #ffc29e;
+	color: #ffb3a6;
 }
 
 .code .n {
@@ -621,8 +629,8 @@ svg {
 }
 
 .compare-card.with {
-	border-color: rgb(90 212 155 / 0.28);
-	background: linear-gradient(180deg, rgb(90 212 155 / 0.06), transparent 60%), var(--bg-raised);
+	border-color: rgb(94 220 184 / 0.28);
+	background: linear-gradient(180deg, rgb(94 220 184 / 0.06), transparent 60%), var(--bg-raised);
 }
 
 .compare-card h3 {
@@ -700,7 +708,7 @@ svg {
 	height: 42px;
 	margin-bottom: 20px;
 	border-radius: 11px;
-	background: var(--accent-soft);
+	background: var(--icon-tile);
 	color: var(--accent);
 }
 
@@ -846,10 +854,11 @@ svg {
 	position: relative;
 	overflow: hidden;
 	padding: clamp(48px, 9vw, 96px) clamp(20px, 5vw, 64px);
-	border: 1px solid var(--line);
+	border: 1px solid var(--line-strong);
 	border-radius: calc(var(--radius) + 8px);
-	background: radial-gradient(ellipse 70% 90% at 50% 120%, rgb(255 122 69 / 0.22), transparent 70%),
-		var(--bg-raised);
+	/* Dark Teal, like the brand kit's logo card. */
+	background: radial-gradient(ellipse 70% 90% at 50% 120%, rgb(0 107 107 / 0.5), transparent 70%),
+		var(--teal-dark);
 	text-align: center;
 }
 
@@ -894,10 +903,6 @@ svg {
 	.footer-grid > :first-child {
 		grid-column: auto;
 	}
-}
-
-.site-footer .brand {
-	color: var(--text);
 }
 
 .footer-grid p {

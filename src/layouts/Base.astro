@@ -21,8 +21,10 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="theme-color" content="#0b0c10" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="theme-color" content="#002326" />
+		<link rel="icon" href="/brandkit/v1/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/svg+xml" href="/brandkit/v1/favicon.svg" />
+		<link rel="apple-touch-icon" href="/brandkit/v1/icon-on-teal-180.png" />
 		{canonical && <link rel="canonical" href={canonical} />}
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />

@@ -31,11 +31,11 @@ by itself) and stop it with `astro dev stop` / `astro preview stop`.
 |---|---|
 | `src/pages/index.astro` | The page. Its copy is in plain arrays at the top (facts, lists, features, FAQ) |
 | `src/components/FlowMock.astro` | The hero visual: a sample flow and the webhook response it produces |
-| `src/components/Header.astro`, `Footer.astro`, `Logo.astro` | Site chrome and the mark |
+| `src/components/Header.astro`, `Footer.astro`, `Logo.astro` | Site chrome and the logo (`logo-on-dark.svg` from the brand kit) |
 | `src/layouts/Base.astro` | `<head>`, skip link, header and footer around every page |
 | `src/styles/global.css` | All styling. Colour and size tokens are on `:root` at the top |
 | `src/site.ts` | Every outbound link, including `DOCS_URL` |
-| `public/favicon.svg` | The mark; keep it the same drawing as `Logo.astro` |
+| `public/brandkit/v1/` | Brand kit: favicons, app icons and logos. `Base.astro` links the favicons and touch icon, and `Logo.astro` the logo, by their `/brandkit/v1/` paths; update those links if the kit moves |
 
 `DOCS_URL` (in `src/site.ts`) and `site` (in `astro.config.mjs`) are placeholders until
 the domains are chosen.
@@ -52,7 +52,11 @@ the domains are chosen.
 - No cookies, analytics or third-party requests: fonts are self-hosted (`@fontsource`)
   and icons are inlined at build time (`@lucide/astro`). The footer says so; keep it
   true.
-- The site is dark only. Check new colours for contrast against `--bg` and `--bg-raised`.
+- The site is dark teal only, in the brand kit's colours (Coral, Deep Teal, Dark Teal in
+  `public/brandkit/v1/README.md`, tokens `--coral`, `--teal`, `--teal-dark`). Check new
+  colours for contrast against `--bg` and `--bg-raised`. Coral is only 3:1 on Dark Teal
+  and white on coral is only 3.2:1, so coral text stays on the darker surfaces and text
+  on coral uses `--accent-ink`.
 
 ## Pins
 

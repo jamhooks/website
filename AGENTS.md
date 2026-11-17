@@ -9,7 +9,7 @@ a visual IVR flow manager for Jambonz. It is built with plain Astro (no UI frame
 Tailwind) and ships no client-side JavaScript. It deploys to GitHub Pages from `master`
 (`.github/workflows/deploy.yml`).
 
-Manuals and reference live on the docs site (`../jamhooks-docs`); this site only links
+Manuals and reference live on the docs site (`../docs`); this site only links
 to them.
 
 ## Commands
@@ -37,8 +37,9 @@ by itself) and stop it with `astro dev stop` / `astro preview stop`.
 | `src/site.ts` | Every outbound link, including `DOCS_URL` |
 | `public/brandkit/v1/` | Brand kit: favicons, app icons and logos. `Base.astro` links the favicons and touch icon, and `Logo.astro` the logo, by their `/brandkit/v1/` paths; update those links if the kit moves |
 
-`DOCS_URL` (in `src/site.ts`) and `site` (in `astro.config.mjs`) are placeholders until
-the domains are chosen.
+The site is served at `https://jamhooks.com` (`CNAME`, `site` in `astro.config.mjs`) and
+links to the docs at `https://docs.jamhooks.com` (`DOCS_URL` in `src/site.ts`). Keep
+those in step with the CNAME files if a domain ever changes.
 
 ## Writing rules
 

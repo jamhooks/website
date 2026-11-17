@@ -1,6 +1,6 @@
 // Every place the site links out to, in one file.
 //
-// The docs domain is not chosen yet. Change DOCS_URL here once it is (no trailing slash);
+// DOCS_URL is the docs site's domain (no trailing slash; same as the docs repo's CNAME);
 // docs paths are written with a trailing slash, as the docs site serves them.
 export const DOCS_URL = 'https://docs.jamhooks.com';
 

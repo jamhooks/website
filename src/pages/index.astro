@@ -78,7 +78,7 @@ const features = [
 const faqs = [
 	{
 		q: 'What is Jambonz?',
-		a: 'Jambonz is an open-source voice platform for building telephony applications. When a call comes in, it asks your application what to do next over HTTP webhooks. Jamhooks is that application, built visually.',
+		a: 'Jambonz is an open-source voice platform for building telephony applications. When a call comes in, it asks your application what to do next over HTTP webhooks. JamHooks is that application, built visually.',
 	},
 	{
 		q: 'Do I need to write code?',
@@ -86,14 +86,14 @@ const faqs = [
 	},
 	{
 		q: 'Where does it run?',
-		a: `On your own server. Jamhooks is a single Python service that stores flows as JSON files, shipped as a Docker image. Try it on your own machine first, then follow the <a href="${links.deployment}">deployment guide</a> before you take real calls.`,
+		a: `On your own server. JamHooks is a single Python service that stores flows as JSON files, shipped as a Docker image. Try it on your own machine first, then follow the <a href="${links.deployment}">deployment guide</a> before you take real calls.`,
 	},
 	{
 		q: 'Can I test a flow without calling it?',
 		a: 'Yes. Simulate dry-runs a flow with the digits or speech you type and shows the path it takes. Once real calls come in, the Debug pane shows each one live, node by node.',
 	},
 	{
-		q: 'What does Jamhooks store about callers?',
+		q: 'What does JamHooks store about callers?',
 		a: `No call records: no caller numbers, digits, speech, recordings or call history, not even temporarily. Its own logs identify calls, not callers. The <a href="${links.privacy}">personal data reference</a> has the details.`,
 	},
 	{
@@ -104,8 +104,8 @@ const faqs = [
 ---
 
 <Base
-	title="Jamhooks: visual call flows for Jambonz"
-	description="Jamhooks is a drag-and-drop IVR designer for Jambonz. It compiles your call flows into Jambonz verbs and answers the webhooks itself. Self-hosted, one Docker image, no database."
+	title="JamHooks: visual call flows for Jambonz"
+	description="JamHooks is a drag-and-drop IVR designer for Jambonz. It compiles your call flows into Jambonz verbs and answers the webhooks itself. Self-hosted, one Docker image, no database."
 >
 	<section class="hero">
 		<div class="wrap">
@@ -115,8 +115,8 @@ const faqs = [
 				<span class="line dim">Skip the webhook server.</span>
 			</h1>
 			<p class="lede">
-				Jamhooks is a drag-and-drop designer for Jambonz call flows. It compiles what you build into
-				Jambonz verbs and answers the webhooks itself, so you design the call and Jamhooks runs it.
+				JamHooks is a drag-and-drop designer for Jambonz call flows. It compiles what you build into
+				Jambonz verbs and answers the webhooks itself, so you design the call and JamHooks runs it.
 			</p>
 			<div class="actions">
 				<a class="btn btn-primary" href={links.quickStart}>Get started</a>
@@ -144,16 +144,16 @@ const faqs = [
 	<section class="section" aria-labelledby="why">
 		<div class="wrap">
 			<div class="section-head">
-				<span class="kicker">Why Jamhooks</span>
+				<span class="kicker">Why JamHooks</span>
 				<h2 id="why">Stop hand-writing a webhook server for every phone menu.</h2>
 				<p>
-					Jambonz asks your application what to do on every step of a call. Jamhooks gives it the
+					Jambonz asks your application what to do on every step of a call. JamHooks gives it the
 					answer from a flow you can see.
 				</p>
 			</div>
 			<div class="compare">
 				<div class="compare-card with">
-					<h3>With Jamhooks</h3>
+					<h3>With JamHooks</h3>
 					<ul>
 						{
 							withJamhooks.map((item) => (
@@ -243,7 +243,7 @@ const faqs = [
 					<div>
 						<h3>Take calls</h3>
 						<p>
-							Jambonz calls the webhooks and Jamhooks answers with the verbs for each step. Open
+							Jambonz calls the webhooks and JamHooks answers with the verbs for each step. Open
 							Debug to watch live calls move through the flow.
 						</p>
 					</div>
@@ -277,7 +277,7 @@ const faqs = [
 	<section class="section" aria-labelledby="cta-title">
 		<div class="wrap">
 			<div class="cta">
-				<h2 id="cta-title">Draw the flow. Jamhooks answers the webhooks.</h2>
+				<h2 id="cta-title">Draw the flow. JamHooks answers the webhooks.</h2>
 				<p>
 					Start it on your own machine with Docker, build your first flow and point a Jambonz
 					application at it.

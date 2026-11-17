@@ -1,7 +1,7 @@
-# Jamhooks website
+# JamHooks website
 
-The public one-page site for [Jamhooks](https://github.com/jamhooks/jamhooks), the visual
-IVR flow manager for Jambonz. Built with [Astro](https://astro.build), with no client-side
+The public one-page site for [JamHooks](https://github.com/jamhooks/jamhooks), the visual call flow
+designer for Jambonz. Built with [Astro](https://astro.build), with no client-side
 JavaScript, cookies or tracking.
 
 ```bash

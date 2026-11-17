@@ -1,11 +1,11 @@
 # AGENTS.md
 
-Working guide for AI coding agents (and humans) in the Jamhooks website.
+Working guide for AI coding agents (and humans) in the JamHooks website.
 
 ## What this is
 
-The public, one-page marketing site for [Jamhooks](https://github.com/jamhooks/jamhooks),
-a visual IVR flow manager for Jambonz. It is built with plain Astro (no UI framework, no
+The public, one-page marketing site for [JamHooks](https://github.com/jamhooks/jamhooks),
+a visual call flow designer for Jambonz. It is built with plain Astro (no UI framework, no
 Tailwind) and ships no client-side JavaScript. It deploys to GitHub Pages from `master`
 (`.github/workflows/deploy.yml`).
 

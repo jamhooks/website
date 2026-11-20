@@ -1,8 +1,9 @@
 ---
 // The hero visual: a flow as the designer shows it, next to the webhook response JamHooks
-// sends Jambonz for its first step. Keep it true to the app: component names from
-// docs/FLOWS.md, the gather fields from app/nodes/verbs/menu.py, and the action hook
-// route from docs/API.md (`/webhooks/{flow_name}/continue/{node_id}`). The app sends the
+// sends Jambonz for its first step. Keep it true to the app: component names from the
+// docs repo's reference/flows.md, the gather fields from app/nodes/verbs/menu.py in the
+// app repo, and the action hook route from the docs repo's reference/api.md
+// (`/webhooks/{flow_name}/continue/{node_id}`). The app sends the
 // action hook with BASE_WEBHOOK_URL in front; the panel says "simplified" and shows only
 // the path, so the line fits.
 import { Bot, ListOrdered, PhoneForwarded, PhoneOff, Volume2, Workflow } from '@lucide/astro';

@@ -44,8 +44,9 @@ those in step with the CNAME files if a domain ever changes.
 ## Writing rules
 
 - Every product claim must hold for the app: check it against the app's `README.md` and
-  `docs/*.md` (FLOWS, RUNTIME, API, PRIVACY) before you write it. When the app changes a
-  name or a behaviour, update the copy here.
+  the reference in the docs repo (`../docs/src/content/docs/reference/`: flows, runtime,
+  API, privacy) before you write it. When the app changes a name or a behaviour, update
+  the copy here.
 - Name UI controls as the editor shows them: Deploy, Simulate, Debug.
 - Never write the em-dash character; rewrite the sentence instead.
 - Never put real personal data in examples (phone numbers, names, recordings). Use

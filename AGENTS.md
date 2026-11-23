@@ -12,6 +12,12 @@ Tailwind) and ships no client-side JavaScript. It deploys to GitHub Pages from `
 Manuals and reference live on the docs site (`../docs`); this site only links
 to them.
 
+Who JamHooks is for, how it is sold and which decisions are still open are in
+`CONTEXT.md` of the workspace repo (`jamhooks/workspace`; `../CONTEXT.md` when this repo
+is cloned there). Read it before writing copy. Until it says otherwise, don't call
+JamHooks open source, don't publish prices, and keep the tone of the copy already on
+this page.
+
 ## Commands
 
 ```bash
